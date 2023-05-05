@@ -35,4 +35,4 @@ Here are some references:
 - https://cjovi.icu/CVE/1586.html
 
 
-If you have any questions or suggestions, please feel free to contact me(https://t.me/ElisaOmega).(https://t.me/ElisaOmega).
+If you have any questions or suggestions, please feel free to contact me(https://t.me/ElisaOmega).
