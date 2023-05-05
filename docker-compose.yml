@@ -1,0 +1,60 @@
+version: '3.8'
+services:
+  demo1:
+    build: ./src/demo
+    links:
+      - redis
+    ports:
+      - 8081:8081
+    environment:
+      - TOMCAT_PORT=8081
+    restart: always
+  
+  demo2:
+    build: ./src/demo
+    links:
+      - redis
+    ports:
+      - 8082:8082
+    environment:
+      - TOMCAT_PORT=8082
+    restart: always
+
+  demo3:
+    build: ./src/demo
+    links:
+      - redis
+    ports:
+      - 8083:8083
+    environment:
+      - TOMCAT_PORT=8083
+    restart: always
+
+  bot:
+    build: ./src/bot
+    links:
+      - proxy
+    ports:
+      - 8090:8090
+    restart: always
+
+  proxy:
+    build: ./src/proxy
+    links:
+      - demo1
+      - demo2
+      - demo3
+    ports:
+      - 8080:80
+
+  cache:
+    build: ./src/cache
+    links:
+      - redis
+    ports:
+      - 2830:2830
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
